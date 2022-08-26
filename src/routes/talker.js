@@ -22,4 +22,14 @@ router.get('/:id', async (req, res) => {
   return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
 });
 
+router.post('/',
+    nameValid,
+    ageValid,
+    talkValid,
+    watchedartValid,
+    rateValid,
+    toeknValid,
+    userValid,
+  );
+
 module.exports = router;
