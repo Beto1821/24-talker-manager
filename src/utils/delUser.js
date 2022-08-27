@@ -7,7 +7,7 @@ const talkers = await readFile();
 const delTalkers = talkers.filter((e) => e.id !== id);
 const path = 'src/talker.json';
 await fs.writeFile(path, JSON.stringify(delTalkers));
-return res.status(204).json();
+return res.sendStatus(204);
 };
 
 module.exports = { delUser };

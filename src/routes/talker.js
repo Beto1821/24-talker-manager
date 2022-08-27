@@ -9,6 +9,7 @@ const tokenValid = require('../middlewares/tokenValid');
 const { addUser } = require('../utils/addUser');
 const { editUser } = require('../utils/editUser');
 const { delUser } = require('../utils/delUser');
+const { searchName } = require('../utils/searchUser');
 
 const router = express.Router();
 
@@ -20,6 +21,12 @@ router.get('/', async (req, res) => {
   return res.status(200).json([]);
   }
 });
+
+router.get(
+  '/search',
+  tokenValid,
+  searchName,
+);
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
