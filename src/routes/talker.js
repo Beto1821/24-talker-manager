@@ -8,6 +8,7 @@ const rateValid = require('../middlewares/rateValid');
 const tokenValid = require('../middlewares/tokenValid');
 const { addUser } = require('../utils/addUser');
 const { editUser } = require('../utils/editUser');
+const { delUser } = require('../utils/delUser');
 
 const router = express.Router();
 
@@ -41,7 +42,7 @@ router.post(
     addUser,
   );
 
-  router.put(
+router.put(
     '/:id',
     tokenValid,
     nameValid,
@@ -51,5 +52,11 @@ router.post(
     rateValid,
     editUser,
   );
+
+router.delete(
+  '/:id',
+  tokenValid,
+  delUser,
+);
 
 module.exports = router;
