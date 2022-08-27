@@ -7,6 +7,7 @@ const watchedAtValid = require('../middlewares/watchedAtValid');
 const rateValid = require('../middlewares/rateValid');
 const tokenValid = require('../middlewares/tokenValid');
 const { addUser } = require('../utils/addUser');
+const { editUser } = require('../utils/editUser');
 
 const router = express.Router();
 
@@ -38,6 +39,17 @@ router.post(
     watchedAtValid,
     rateValid,
     addUser,
+  );
+
+  router.put(
+    '/:id',
+    tokenValid,
+    nameValid,
+    ageValid,
+    talkValid,
+    watchedAtValid,
+    rateValid,
+    editUser,
   );
 
 module.exports = router;
