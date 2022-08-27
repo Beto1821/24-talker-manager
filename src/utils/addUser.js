@@ -1,9 +1,9 @@
 const fs = require('fs').promises;
-const { readContentFile } = require('./readFile');
+const { readFile } = require('./readFile');
 
 const addUser = async (req, res) => {
   const { name, age, talk: { watchedAt, rate } } = req.body;
-  const data = await readContentFile();
+  const data = await readFile();
   const id = data.length + 1;
 
   const usersObj = {

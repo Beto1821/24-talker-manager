@@ -1,5 +1,12 @@
 const express = require('express');
 const { readFile } = require('../utils/readFile');
+const nameValid = require('../middlewares/nameValid');
+const ageValid = require('../middlewares/ageValid');
+const talkValid = require('../middlewares/talkValid');
+const watchedAtValid = require('../middlewares/watchedAtValid');
+const rateValid = require('../middlewares/rateValid');
+const tokenValid = require('../middlewares/tokenValid');
+const { addUser } = require('../utils/addUser');
 
 const router = express.Router();
 
@@ -22,14 +29,15 @@ router.get('/:id', async (req, res) => {
   return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
 });
 
-router.post('/',
+router.post(
+    '/',
+    tokenValid,
     nameValid,
     ageValid,
     talkValid,
-    watchedartValid,
+    watchedAtValid,
     rateValid,
-    toeknValid,
-    userValid,
+    addUser,
   );
 
 module.exports = router;
