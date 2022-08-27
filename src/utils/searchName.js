@@ -2,6 +2,7 @@ const { readFile } = require('./readFile');
 
 const searchName = async (req, res) => {
 const { q } = req.query;
+console.log(req.query);
 const talkers = await readFile();
 const search = talkers.filter((e) => e.name.includes(q));
 
