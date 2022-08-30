@@ -2,23 +2,14 @@ const fs = require('fs/promises');
 const { readFile } = require('./readFile');
 
 const addUser = async (req, res) => {
-  const { name, age, talk: { watchedAt, rate } } = req.body;
+  const newUser = req.body;
   const data = await readFile();
-  const id = data.length + 1;
+  newUser.id = data.length + 1;
 
-  const usersObj = {
-    id,
-    name,
-    age,
-    talk: {
-      watchedAt,
-      rate,
-    },
-  };
-  data.push(usersObj);
+  data.push(newUser);
   const path = 'src/talker.json';
   await fs.writeFile(path, JSON.stringify(data));
-  return res.status(201).json(usersObj);
+  return res.status(201).json(newUser);
 };
 
 module.exports = { addUser };
